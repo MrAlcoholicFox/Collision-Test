@@ -1,6 +1,8 @@
 import ecs100.UI;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class object {
     private double X;
@@ -9,6 +11,7 @@ public class object {
     private double index;
     private double midPointX;
     private double midPointY;
+    private double step = 10;
     public object(double X, double Y){
         this.X = X;
         this.Y = Y;
@@ -21,20 +24,56 @@ public class object {
     }
 
     public void runner(){
-        UI.eraseRect(X, Y, size, size);
         collision_check();
-        UI.drawRect(X, Y, size, size);
+        UI.drawOval(X, Y, size, size);
     }
 
     private void collision_check(){
         for (object obj: Main.objects){
             if (Main.objects.indexOf(obj) != index){
-                if ()
+                if (distance_checker(this.X, this.Y, obj.getX(), obj.getY()) <= size){
+                    UI.setColor(Color.red);
+                }
+                else {
+                    UI.setColor(Color.black);
+                }
             }
         }
     }
 
+    private double distance_checker(double x1, double y1, double x2, double y2){
+        return Math.abs(Math.sqrt(Math.pow(x1-x2, 2)+Math.pow(y1-y2, 2)));
+    }
+
     private void collision_application(object colObj){
 
+    }
+
+    public double getX() {
+        return X;
+    }
+
+    public double getY() {
+        return Y;
+    }
+
+    public void move_up(){
+        UI.eraseOval(X, Y, size, size);
+        this.Y -= step;
+    }
+
+    public void move_down(){
+        UI.eraseOval(X, Y, size, size);
+        this.Y += step;
+    }
+
+    public void move_left(){
+        UI.eraseOval(X, Y, size, size);
+        this.X -= step;
+    }
+
+    public void move_right(){
+        UI.eraseOval(X, Y, size, size);
+        this.X += step;
     }
 }
