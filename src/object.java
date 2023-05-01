@@ -30,8 +30,9 @@ public class object {
 
     private void collision_check(){
         for (object obj: Main.objects){
+            double distance = distance_checker(this.X, this.Y, obj.getX(), obj.getY());
             if (Main.objects.indexOf(obj) != index){
-                if (distance_checker(this.X, this.Y, obj.getX(), obj.getY()) <= size){
+                if (distance <= size){
                     UI.setColor(Color.red);
                 }
                 else {
@@ -42,10 +43,10 @@ public class object {
     }
 
     private double distance_checker(double x1, double y1, double x2, double y2){
-        return Math.abs(Math.sqrt(Math.pow(x1-x2, 2)+Math.pow(y1-y2, 2)));
+        return Math.sqrt(Math.pow(x1-x2, 2)+Math.pow(y1-y2, 2));
     }
 
-    private void collision_application(object colObj){
+    private void collision_application(object colObj, double distance){
 
     }
 
