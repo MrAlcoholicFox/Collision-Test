@@ -1,5 +1,6 @@
 import ecs100.UI;
 
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -12,8 +13,8 @@ public class Main {
     public static void main(String[] args) {
         UI.initialise();
         UI.setWindowSize(1300,900);
-        object Obj1 = new object(70, 100);
-        object Obj2 = new object(90, 200);
+        object Obj1 = new object(200, 200, true, objects);
+        object Obj2 = new object(300, 300, false, objects);
         objects.add(Obj1);
         objects.add(Obj2);
         Obj1.setIndex(objects.indexOf(Obj1));
